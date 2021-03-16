@@ -64,7 +64,7 @@ public class Pedido {
             // Producto producto_a_eliminar = this.listaProductos.get(posicion);
             // this.importe = this.importe - producto_a_eliminar.getPrecio();
             setImporte( getImporte() - this.listaProductos.get(posicion).getPrecio());
-        // eliminamos producto
+        
             this.listaProductos.remove((int) posicion);
     }
 
