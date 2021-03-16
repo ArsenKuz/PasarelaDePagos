@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.Scanner;
 
 public class PasarelaDePago {
     private double importe;
@@ -28,7 +29,7 @@ public class PasarelaDePago {
         this.codigoPago = codigoPago;
     }
 
-    private void Efectivo() {
+    private void Efectivo(String efectivo) {
         this.importe = 0;
         this.codigoPago = String.valueOf(new Date().getTime());
     }
@@ -46,21 +47,30 @@ public class PasarelaDePago {
     }
 
     public void Pagar(TipoPago TipoPago) {
+        Scanner metodoPago = new Scanner(System.in);
+        String opcion;
 
         switch (TipoPago) {
-            case EFECTIVO:
-                this.Efectivo();
-                break;
-            case CUENTA:
-                // leer una Cuenta desde Scanner(System.in) nextline
-                this.Cuenta("TEST");
-                break;
-            case TARJETA:
-                // leer una tarjeta desde Scanner(System.in) nextline
-                this.Tarjeta("TEST");
-                break;
-            default:
-                break;
+
+        case EFECTIVO:
+            System.out.print("Introduce el efectivo: ");
+            opcion = metodoPago.nextLine();
+            this.Efectivo(opcion);
+            break;
+        case CUENTA:
+            System.out.print("Introduce el número de cuenta: ");
+            opcion = metodoPago.nextLine();
+            // leer una Cuenta desde Scanner(System.in) nextline
+            this.Cuenta(opcion);
+            break;
+        case TARJETA:
+            System.out.print("Introduce el nuúmero tarjeta: ");
+            opcion = metodoPago.nextLine();
+            // leer una tarjeta desde Scanner(System.in) nextline
+            this.Tarjeta(opcion);
+            break;
+        default:
+            break;
         }
     }
 

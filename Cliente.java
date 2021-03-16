@@ -20,6 +20,7 @@ public class Cliente {
         this.historial = historial;
         this.fechaAlta = fechaAlta;
     }
+   
     public Cliente(String nombre, String apellidos, String direccion, String telefono) 
     {
         this.nombre = nombre.toLowerCase();
@@ -81,11 +82,17 @@ public class Cliente {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+    
+    public static void agregadorClientesManual(ArrayList<Cliente> catalogoClientes) {
+        Cliente cliente_1 = new Cliente("arsen", "kor", "calle", "1234");
+        catalogoClientes.add(cliente_1);
+    }
+
     //TODO validacion de campos
     @Override
     public String toString() {
         String cliente = "Nombre : " + nombre + "" + ", Apellidos : " + apellidos + "" + ", direccion : "
-                + getDireccion() + "" + ", telefono : " + getTelefono() + "" + ", historial : " + getHistorial() + "";
+                + getDireccion() + "" + ", telefono : " + getTelefono() + "" + ", pedidos en el historial : " + getHistorial().size() + "";
         return cliente;
 
     }

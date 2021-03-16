@@ -42,6 +42,7 @@ public class Pedido {
                 // En caso de no asignar ninguna fecha y hora concreta, por defecto se rellenará con la fecha y hora actuales en el momento de finalizar el pedido (es decir, cuando lo pagamos)
                 this.fechaHora = new Date();
             }
+            System.out.println("Pedido realizado con éxito.");
         }else{
             System.out.println("El pago ya ha sido realizado.");
         }
