@@ -11,21 +11,41 @@ public class Producto {
         this.precio = precio;
     }
 
+    
+    /** 
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    
+    /** 
+     * @param precio
+     */
     public void setPrecio(double precio) {
         this.precio = precio;
     }
 
+    
+    /** 
+     * @return String
+     */
     String getNombre() {
         return this.nombre;
     }
 
+    
+    /** 
+     * @return double
+     */
     double getPrecio() {
         return this.precio;
     }
+    
+    /** 
+     * @return ArrayList<Producto>
+     */
     public static ArrayList<Producto> crearInventario() {
         Producto producto_1 = new Producto("Veggie Buerger", 15.95);
         Producto producto_2 = new Producto("Meat Lovers Burger", 4.50);
@@ -43,6 +63,10 @@ public class Producto {
         return catalogoProductos;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         String producto = "Producto : " + this.nombre + " Precio : " + this.precio;

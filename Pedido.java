@@ -31,6 +31,10 @@ public class Pedido {
         this.estadoPedido = EstadoPedido.INPAGADO;
     }
 
+    
+    /** 
+     * @param tipoPago
+     */
     public void Pagar(TipoPago tipoPago){
         // Una vez realizado el pago no se puede volver a pagar
         // Si no existe pago, pago será null
@@ -48,8 +52,12 @@ public class Pedido {
         }
     }
 
+    
+    /** 
+     * @param producto
+     */
     public void agregarProducto(Producto producto) {
-        // solo podemos agregar mientas no pagado
+        // solo podemos agregar mientas el estado es  inpagado
         if (this.estadoPedido == EstadoPedido.INPAGADO){
             // recalculams importe
                 // this.importe = this.importe + producto.getPrecio();
@@ -59,6 +67,10 @@ public class Pedido {
         }
     }
 
+    
+    /** 
+     * @param posicion
+     */
     public void eliminarProducto(Integer posicion) {
         // recalculamos importe
             // Producto producto_a_eliminar = this.listaProductos.get(posicion);
@@ -68,39 +80,75 @@ public class Pedido {
             this.listaProductos.remove((int) posicion);
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean pedidoVacio(){
         return this.listaProductos.isEmpty();
 
     }
 
+    
+    /** 
+     * @return Cliente
+     */
     public Cliente getCliente() {
         return this.cliente;
     }
 
+    
+    /** 
+     * @param cliente
+     */
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
+    
+    /** 
+     * @return Date
+     */
     public Date getFechaHora() {
         return this.fechaHora;
     }
 
+    
+    /** 
+     * @param fechaHora
+     */
     public void setFechaHora(Date fechaHora) {
         this.fechaHora = fechaHora;
     }
 
+    
+    /** 
+     * @return ArrayList<Producto>
+     */
     public ArrayList<Producto> getListaProductos() {
         return this.listaProductos;
     }
 
+    
+    /** 
+     * @param listaProductos
+     */
     public void setListaProductos(ArrayList<Producto> listaProductos) {
         this.listaProductos = listaProductos;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getImporte() {
         return this.importe;
     }
 
+    
+    /** 
+     * @param importe
+     */
     public void setImporte(double importe) {
         this.importe = Double.parseDouble(String.format("%.2f", importe));
     }
@@ -113,6 +161,10 @@ public class Pedido {
         }
     }
 
+    
+    /** 
+     * @return String
+     */
     // @Override
     // public String toString() {
     //     String pedido = "\n\tCliente:" + getCliente() + "\n\tFecha: " + getFechaHora() + "\n\tProductos: "

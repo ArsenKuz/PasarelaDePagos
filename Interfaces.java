@@ -2,6 +2,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interfaces {
+    
+    /** 
+     * @param catalogoClientes
+     * @param catalogoPedidos
+     * @param catalogoProductos
+     */
     public static void menuPrincipal(ArrayList<Cliente> catalogoClientes, ArrayList<Pedido> catalogoPedidos,
             ArrayList<Producto> catalogoProductos) {
         Cliente.agregadorClientesManual(catalogoClientes);
@@ -52,6 +58,10 @@ public class Interfaces {
         System.out.println("Pulsa 0 para volver al menú pricipal");
     }
   
+    
+    /** 
+     * @param listaProductos
+     */
     public static void imprimirProductos(ArrayList<Producto> listaProductos) {
         for (int index = 0; index < listaProductos.size(); index++) {
             System.out.println(index + 1 + "\t" + (Producto) listaProductos.get(index));

@@ -1,12 +1,12 @@
-
-import java.util.Date;
-import java.util.HashMap;
+// import java.util.Collections;
+// import java.util.Date;
+// import java.util.HashMap;
 // import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.ArrayList;
-// import java.util.Collections;
+
 
 public class Main {
 
@@ -15,6 +15,10 @@ public class Main {
     
    
    
+    
+    /** 
+     * @return Cliente
+     */
     public static Cliente crearCliente() {
         // Creamos metodo para agregar instancias cliente
         Scanner creadorClientesScanner = new Scanner(System.in);
@@ -24,8 +28,7 @@ public class Main {
         String apellidos = creadorClientesScanner.nextLine();
         System.out.print("Introduce la dirección: ");
         String direccion = creadorClientesScanner.nextLine();
-        // TODO -Hay que tener en cuenta que puede que el usuario introduzca espacios, es decir: 766 28 56 33 sería un teléfono válido 
-        String regExTotal = "\\b[6-7]{1}[0-9]{8}\\b";
+        String regExTotal = "\\b[6-7]{1}[0-9]{8}\\b";// TODO -Hay que tener en cuenta que puede que el usuario introduzca espacios, es decir: 766 28 56 33 sería un teléfono válido 
         Boolean coincide = false;
         String telefono = "";
         while (true) {
@@ -43,6 +46,11 @@ public class Main {
 
     
 
+    
+    /** 
+     * @param catalogoProductos
+     * @param nuevoPedido
+     */
     public static void menuAgregarProductosAlPedido(ArrayList<Producto> catalogoProductos, Pedido nuevoPedido) {
         Scanner administrarProductosScanner = new Scanner(System.in);
         String opcion;
@@ -55,10 +63,10 @@ public class Main {
                 return; // volver al menu anterior
             }
             try {
-                // 1º comprobamos que opcion es un entero & indice -1 (xk empezamos en 0)
+                // 1º comprobamos que opcion es un entero & indice -1 (ya que empezamos en 0)
                 product_index = Integer.parseInt(opcion) - 1;
                 try {
-                    // 2º comprobamos que existe un producto en el catalogo de productos con ese
+                    // 2º comprobamos que existe un producto en el catalogo de productos con ese indice
                     Producto producto_seleccionado = catalogoProductos.get(product_index);
                     nuevoPedido.agregarProducto(producto_seleccionado);
                     nuevoPedido.imprimirProductosDelPedido();
@@ -73,6 +81,10 @@ public class Main {
         }
     }
 
+    
+    /** 
+     * @param nuevoPedido
+     */
     public static void menuEliminarProductosDelPedido(Pedido nuevoPedido) {
         Scanner administrarProductosScanner = new Scanner(System.in);
         String opcion;
@@ -100,6 +112,11 @@ public class Main {
         }
     }
 
+    
+    /** 
+     * @param nuevoPedido
+     * @param cliente
+     */
     public static void menuConfirmarPedido(Pedido nuevoPedido, Cliente cliente) {
         Scanner administrarProductosScanner = new Scanner(System.in);
         String opcion;
@@ -137,6 +154,12 @@ public class Main {
     }
 
     
+    
+    /** 
+     * @param cliente
+     * @param catalogoPedidos
+     * @param catalogoProductos
+     */
     public static void gestionDePedidos(Cliente cliente, ArrayList<Pedido> catalogoPedidos,
             ArrayList<Producto> catalogoProductos) {
         // Cada vez que accedemos a una gestion de pedido, creamos un nuevo pedido
@@ -168,6 +191,10 @@ public class Main {
         }
     }
 
+    
+    /** 
+     * @param catalogoClientes
+     */
     public static void gestionDeUsuarios(ArrayList<Cliente> catalogoClientes) {
         Scanner administrarClientesScanner = new Scanner(System.in);
         String opcion;
@@ -202,6 +229,11 @@ public class Main {
     }
 
    
+    
+    /** 
+     * @param catalogoClientes
+     * @return clienteSeleccionado
+     */
     public static Cliente seleccionarCliente(ArrayList<Cliente> catalogoClientes) {
 
         System.out.println("***** Listado de usuarios a seleccionar: *****");
@@ -222,16 +254,20 @@ public class Main {
         
     }
     
+    
+    /** 
+     * @param args
+     */
     public static void main(String[] args)
 
     {
-        // 
+        // arrancamos la "base de datos de clientes"
         ArrayList<Cliente> catalogoClientes = new ArrayList<Cliente>();
-        // creamos el catálogo de pedidos - dinámicamente
+        // creamos el catálogo de pedidos 
         ArrayList<Pedido> catalogoPedidos = new ArrayList<Pedido>();
         // creamos un catalogo basado en el ARRAY
         ArrayList<Producto> catalogoProductos =Producto.crearInventario();
-        // arrancamos la "base de datos de clientes"
+        
 
         // arrancamos la función principal (menu)
         Interfaces.menuPrincipal(catalogoClientes, catalogoPedidos, catalogoProductos);
@@ -241,21 +277,3 @@ public class Main {
 
 }
 
-// {
-// String fechaHoy = "yyyy-MM-dd HH:mm:ssZ";
-// SimpleDateFormat simpleDateFormat = new SimpleDateFormat(fechaHoy);
-
-// String date = simpleDateFormat.format(new Date());
-// System.out.println(date);
-
-// ArrayList pedido = new ArrayList();
-
-// pedido.add("Hamburguesa");
-// pedido.add(20);
-// pedido.add(true);
-
-
-
-// System.out.println(pedido);
-
-// }
