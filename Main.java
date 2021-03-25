@@ -1,3 +1,4 @@
+
 // import java.util.Collections;
 // import java.util.Date;
 // import java.util.HashMap;
@@ -7,16 +8,9 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.ArrayList;
 
-
 public class Main {
 
-   
-   
-    
-   
-   
-    
-    /** 
+    /**
      * @return Cliente
      */
     public static Cliente crearCliente() {
@@ -28,7 +22,8 @@ public class Main {
         String apellidos = creadorClientesScanner.nextLine();
         System.out.print("Introduce la dirección: ");
         String direccion = creadorClientesScanner.nextLine();
-        String regExTotal = "\\b[6-7]{1}[0-9]{8}\\b";// TODO -Hay que tener en cuenta que puede que el usuario introduzca espacios, es decir: 766 28 56 33 sería un teléfono válido 
+        String regExTotal = "\\b[6-7]{1}[0-9]{8}\\b";
+        //TODO se debe tener en cuenta la psobilidad de espacio en el numero.
         Boolean coincide = false;
         String telefono = "";
         while (true) {
@@ -44,10 +39,7 @@ public class Main {
         }
     }
 
-    
-
-    
-    /** 
+    /**
      * @param catalogoProductos
      * @param nuevoPedido
      */
@@ -66,7 +58,8 @@ public class Main {
                 // 1º comprobamos que opcion es un entero & indice -1 (ya que empezamos en 0)
                 product_index = Integer.parseInt(opcion) - 1;
                 try {
-                    // 2º comprobamos que existe un producto en el catalogo de productos con ese indice
+                    // 2º comprobamos que existe un producto en el catalogo de productos con ese
+                    // indice
                     Producto producto_seleccionado = catalogoProductos.get(product_index);
                     nuevoPedido.agregarProducto(producto_seleccionado);
                     nuevoPedido.imprimirProductosDelPedido();
@@ -81,8 +74,7 @@ public class Main {
         }
     }
 
-    
-    /** 
+    /**
      * @param nuevoPedido
      */
     public static void menuEliminarProductosDelPedido(Pedido nuevoPedido) {
@@ -112,8 +104,7 @@ public class Main {
         }
     }
 
-    
-    /** 
+    /**
      * @param nuevoPedido
      * @param cliente
      */
@@ -153,9 +144,7 @@ public class Main {
         }
     }
 
-    
-    
-    /** 
+    /**
      * @param cliente
      * @param catalogoPedidos
      * @param catalogoProductos
@@ -167,7 +156,7 @@ public class Main {
         Scanner administrarProductosScanner = new Scanner(System.in);
         String opcion;
         while (true) {
-           
+
             Interfaces.imprimirMenuGestionPedidos();
             opcion = administrarProductosScanner.nextLine();
             if (opcion.equals("1")) {
@@ -191,8 +180,7 @@ public class Main {
         }
     }
 
-    
-    /** 
+    /**
      * @param catalogoClientes
      */
     public static void gestionDeUsuarios(ArrayList<Cliente> catalogoClientes) {
@@ -210,14 +198,14 @@ public class Main {
                 System.out.print("***********Lista de clientes********* ");
                 System.out.println();
 
-                // System.out.println(catalogoClientes);
-                Iterator<Cliente> iterador = catalogoClientes.iterator();
-                int index = 1;
-                while (iterador.hasNext()) {
+                System.out.println(catalogoClientes);
+                // Iterator<Cliente> iterador = catalogoClientes.iterator();
+                // int index = 1;
+                // while (iterador.hasNext()) {
 
-                    System.out.println(index + " - " + (Cliente) iterador.next());
-                    index++;
-                }
+                // System.out.println(index + " - " + (Cliente) iterador.next());
+                // index++;
+                // }
             } else if (opcion.equals("0")) {
                 return;
 
@@ -228,9 +216,7 @@ public class Main {
         }
     }
 
-   
-    
-    /** 
+    /**
      * @param catalogoClientes
      * @return clienteSeleccionado
      */
@@ -251,11 +237,10 @@ public class Main {
         // To Do (try-catch java.lang.IndexOutOfBoundsException)
         Cliente clienteSeleccionado = catalogoClientes.get(usuario_index - 1);
         return clienteSeleccionado;
-        
+
     }
-    
-    
-    /** 
+
+    /**
      * @param args
      */
     public static void main(String[] args)
@@ -263,17 +248,14 @@ public class Main {
     {
         // arrancamos la "base de datos de clientes"
         ArrayList<Cliente> catalogoClientes = new ArrayList<Cliente>();
-        // creamos el catálogo de pedidos 
+        // creamos el catálogo de pedidos
         ArrayList<Pedido> catalogoPedidos = new ArrayList<Pedido>();
         // creamos un catalogo basado en el ARRAY
-        ArrayList<Producto> catalogoProductos =Producto.crearInventario();
-        
+        ArrayList<Producto> catalogoProductos = Producto.crearInventario();
 
         // arrancamos la función principal (menu)
         Interfaces.menuPrincipal(catalogoClientes, catalogoPedidos, catalogoProductos);
 
-
     }
 
 }
-
