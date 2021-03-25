@@ -10,6 +10,15 @@ public class Cliente {
     private String direccion;
     private ArrayList<Pedido> historial;
 
+    /**
+     * 
+     * @param nombre
+     * @param apellidos
+     * @param direccion
+     * @param telefono
+     * @param historial
+     * @param fechaAlta
+     */
     public Cliente(String nombre, String apellidos, String direccion, String telefono, ArrayList<Pedido> historial, Date fechaAlta) 
     {   
 
@@ -21,6 +30,14 @@ public class Cliente {
         this.fechaAlta = fechaAlta;
     }
    
+    /** 
+     * Este constructor sera usado en el "creador" de clientes
+     * 
+     * @param nombre
+     * @param apellidos
+     * @param direccion
+     * @param telefono
+     */
     public Cliente(String nombre, String apellidos, String direccion, String telefono) 
     {
         this.nombre = nombre.toLowerCase();
@@ -57,7 +74,7 @@ public class Cliente {
 
     
     /** 
-     * @return ArrayList<Pedido>
+     * @return getHistorial
      */
     public ArrayList<Pedido> getHistorial() {
         return this.historial;
